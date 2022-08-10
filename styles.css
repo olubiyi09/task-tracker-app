@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+
+:root {
+    --white: #fff;
+    --black: #1c2b2d;
+    --blue: #31326f;
+    --light-blue: #005490;
+    --color-primary: #9d0191;
+    --color-sec: #db6400;
+    --color-grey: #eee;
+    --color-dark-grey: #222831;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* custom styling start here */
+.main{
+    width: 100%;
+    background: url(./images/laptop.jpg) center no-repeat;
+    background-size: cover;
+    position: relative;
+    color: var(--white);
+    z-index: 0;
+}
+
+.main::after{
+    content: "";
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.app-wrapper,
+.task-form,
+.task-list{
+    width: 70%;
+    margin: 0 auto;
+    padding: 2rem 0;
+    position: relative;
+}
+
+
+.top-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.date{
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.time{
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+button.clear-task{
+    height: 3rem;
+    text-align: center;
+    padding: 7px;
+    border: none;
+    border-radius: 3px;
+    background-color: red;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+.total-task{
+    font-size: 1.5rem;
+    background-color: var(--color-sec);
+    display: inline-block;
+    padding: 0 1rem;
+    border-radius: 3px;
+}
+
+.add-btn .fas{
+    position: absolute;
+    right: 1rem;
+    bottom: 2rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.1s;
+    z-index: 999;
+}
+
+.add-btn .fas:hover{
+    padding: 1.7rem;
+}
+
+.add-btn .fa-plus{
+    background-color: green;
+}
+
+.add-btn .fa-times{
+    display: none;
+    background-color: red;
+}
+
+
+.task-form{
+    position: absolute;
+    width: 30%;
+    top: -100%;
+    left: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+form{
+    width: 80%;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+form > *{
+    display: block;
+    width: 90%;
+    font-size: 1.4rem;
+    margin: 0 auto;
+    padding: 1rem;
+    margin-bottom: 0.4rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+#add-task{
+    background-color: var(--color-sec);
+    color: var(--white);
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#add-task:hover{
+    background-color: orangered;
+}
+
+form input::-webkit-calendar-picker-indicator{
+    cursor: pointer;
+}
+
+
+.task{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-left: 5px solid;
+    border-color: var(--color-sec);
+    border-radius: 0 3px 3px 0;
+    margin: 5px 0;
+}
+
+
+.task-date{
+    background: var(--color-sec);
+    text-align: center;
+    font-size: 1.4rem;
+    padding: 2px;
+    border-radius: 3px;
+    color: var(--white);
+    margin-bottom: 1rem;
+    width: 8rem;
+}
+
+.task-icons > *{
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin-left: 0.3rem;
+}
+
+.fa-check{
+    color: green;
+    position: relative;
+}
+
+
+
+.fa-check:hover::after,
+.fa-edit:hover::after,
+.fa-trash-alt:hover::after{
+    content: "";
+    position: absolute;
+    bottom: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 3px;
+    border-radius: 3px;
+    color: var(--white);
+    font-weight: 300;
+}
+
+.fa-check:hover::after{
+    content: "Completed";
+}
+
+.fa-edit{
+    color: var(--color-primary);
+    position: relative;
+}
+
+.fa-edit:hover::after{
+    content: "Edit";
+}
+
+.fa-trash-alt{
+    color: red;
+    position: relative;
+}
+
+.fa-trash-alt:hover::after{
+    content: "Delete";
+}
+
+.task-text{
+    display: inline-block;
+    font-weight: 600;
+}
+
+.task-index{
+    font-size: 1.5rem;
+    background-color: var(--color-primary);
+    color: var(--white);
+    padding: 5px 1rem;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:769px) {
+    .task-form{
+        width: 70%;
+    }
+
+    form{
+        width: 75%;
+    }
+}
+
