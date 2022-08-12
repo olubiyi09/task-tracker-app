@@ -67,6 +67,8 @@ const addTaskDiv = document.querySelector(".add-btn"),
             }
 
             //Get task from the local storge
+            //Get task from the local storge
+            //Get task from the local storge
             getTasks();
 
             let myObj = {
@@ -86,6 +88,10 @@ const addTaskDiv = document.querySelector(".add-btn"),
 
         })
 
+
+        //Show tasks
+        //Show tasks
+        //Show tasks
         function showTask(){
             tasksEl.innerHTML = "";
             getTasks();
@@ -122,7 +128,10 @@ const addTaskDiv = document.querySelector(".add-btn"),
               if(tasksObj.length != 0){
                 tasksEl.appendChild(taskItem);
 
-                
+                const taskStatus =  taskItem.firstChild.children[3].innerText;
+                if(taskStatus == "true"){
+                    taskItem.classList.add("completed");
+                }
             }
             });
 
@@ -130,7 +139,9 @@ const addTaskDiv = document.querySelector(".add-btn"),
             // console.log(tasksEl);
 
             
-            
+            //Update total Task
+            //Update total Task
+            //Update total Task
             tasksObj.length > 1 ? totalTask.innerHTML = `${tasksObj.length} tasks`:
             totalTask.innerHTML = `${tasksObj.length} task`;
 
@@ -140,6 +151,9 @@ const addTaskDiv = document.querySelector(".add-btn"),
         
 
 
+        //Delete Task
+        //Delete Task
+        //Delete Task
         function deleteTask(index){
             const confirmDel = confirm("Delete this Task");
             if(confirmDel){
@@ -149,6 +163,48 @@ const addTaskDiv = document.querySelector(".add-btn"),
                 showTask();
             }
         }
+
+
+        //DELETE ALL TASK ICON
+        //DELETE ALL TASK ICON
+        //DELETE ALL TASK ICON
+        clearBtn.addEventListener("click", () => {
+            if(tasksObj.length > 0){
+                const confirmDel = confirm("Delete All Task");
+            }
+            localStorage.clear();
+            showTask();
+        })
+
+        //EDIT TASK ICON
+        //EDIT TASK ICON
+        //EDIT TASK ICON
+        function editTask(index){
+            taskForm.reset();
+            showForm();
+            getTasks();
+            taskDate.value = tasksObj[index].date;
+            tasktext.value = tasksObj[index].text;
+            taskDate.value = tasksObj[index].date;
+            tasktext.focus();
+            tasksObj.splice(index, 1);
+            localStorage.setItem("tasks", JSON.stringify(tasksObj));
+            showTask();
+        }
+
+        //TASK COMPLETED ICON
+        //TASK COMPLETED ICON
+        function compeleteTask(index){
+            tasksEl.addEventListener("click", (e) => {
+                if(e.target.classList.contains("fa-check")){
+                    getTasks();
+                    tasksObj[index].completed = "true";
+                    localStorage.setItem("tasks", JSON.stringify(tasksObj));
+                    showTask();
+                }
+            })
+        }
+
 
 
         showTask();
