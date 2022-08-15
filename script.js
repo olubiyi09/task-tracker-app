@@ -74,7 +74,7 @@ const addTaskDiv = document.querySelector(".add-btn"),
             let myObj = {
                 date: taskDate.value,
                 text: tasktext.value,
-                completed: false,
+                completed: false, //here
             }
 
             tasksObj.push(myObj);
@@ -155,8 +155,9 @@ const addTaskDiv = document.querySelector(".add-btn"),
         //Delete Task
         //Delete Task
         function deleteTask(index){
-            const confirmDel = confirm("Delete this Task");
-            if(confirmDel){
+            deleteThisTask.triggerBox(confirmDelete);
+
+            function confirmDelete(){
                 getTasks();
                 tasksObj.splice(index, 1);
                 localStorage.setItem("tasks", JSON.stringify(tasksObj));
@@ -170,10 +171,16 @@ const addTaskDiv = document.querySelector(".add-btn"),
         //DELETE ALL TASK ICON
         clearBtn.addEventListener("click", () => {
             if(tasksObj.length > 0){
-                const confirmDel = confirm("Delete All Task");
+            deleteAllTask.triggerBox(confirmDelete);
             }
-            localStorage.clear();
-            showTask();
+
+            function confirmDelete(){
+                localStorage.clear();
+                showTask();
+            }
+
+
+          
         })
 
         //EDIT TASK ICON
@@ -203,6 +210,8 @@ const addTaskDiv = document.querySelector(".add-btn"),
                     showTask();
                 }
             })
+
+            
         }
 
 
